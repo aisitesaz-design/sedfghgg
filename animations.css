@@ -1,0 +1,32 @@
+/* ===== ANIMATIONS ===== */
+
+        .fade-up { opacity:0; transform:translateY(30px); transition:opacity .8s ease,transform .8s ease; }
+        .fade-up.visible { opacity:1; transform:translateY(0); }
+        /* stagger for grid children */
+        .fade-up .why-card:nth-child(1) { transition-delay:.05s; }
+        .fade-up .why-card:nth-child(2) { transition-delay:.1s; }
+        .fade-up .why-card:nth-child(3) { transition-delay:.15s; }
+        .fade-up .why-card:nth-child(4) { transition-delay:.2s; }
+        .fade-up .why-card:nth-child(5) { transition-delay:.25s; }
+        .fade-up .why-card:nth-child(6) { transition-delay:.3s; }
+
+        @media(prefers-reduced-motion:reduce) {
+            *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+        }
+
+/* ===== HERO RINGS - chakra gradient (blue/purple/gold) ===== */
+.hero-ring-gradient {
+    border-color: transparent !important;
+    background: conic-gradient(#c9a84c 0%, #8b5cf6 30%, #3b82f6 60%, #6366f1 80%, #c9a84c 100%) !important;
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), black calc(100% - 2px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 2px), black calc(100% - 2px));
+    border: none !important;
+}
+.hero-ring-gradient2 {
+    border-color: transparent !important;
+    background: conic-gradient(#6366f1 0%, #3b82f6 40%, #8b5cf6 70%, #c9a84c 100%) !important;
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), black calc(100% - 2px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 2px), black calc(100% - 2px));
+    border: none !important;
+}
+

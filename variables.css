@@ -1,0 +1,88 @@
+/* ===== CSS VARIABLES & THEME ===== */
+
+        :root {
+            --bg:#f7f4ef;
+            --bg2:#f0ece4;
+            --card:#faf8f4;
+            --card2:#f2ede5;
+            --accent:#5b3fa6;
+            --accent2:#7c5cbf;
+            --gold:#c9a84c;
+            --gold2:#e8c97a;
+            --text:#1a1410;
+            --muted:#8c7e6a;
+            --border:rgba(201,168,76,.18);
+            --shadow:rgba(26,20,16,.07);
+            --success:#22c55e;
+            --error:#ef4444;
+            /* chakra 5/6/7 (throat–thirdeye–crown): blue → purple → magenta */
+            --gradient-chakra: linear-gradient(135deg, #00b4d8, #5b3fa6, #be185d);
+        }
+        [data-theme="dark"] {
+            --bg:#0f0d0a;
+            --bg2:#1a1612;
+            --card:#1e1a15;
+            --card2:#252018;
+            --text:#f0ece4;
+            --muted:#8c7e6a;
+            --border:rgba(201,168,76,.15);
+            --shadow:rgba(0,0,0,.3);
+        }
+        *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body {
+            font-family:'Vazirmatn',sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            line-height:1.7;
+            overflow-x:hidden;
+            transition:background .3s,color .3s;
+            /* cursor managed by JS */
+        }
+        /* SEO: isolation for hero layers */
+        .hero { isolation:isolate; }
+
+        /* scrollbar */
+        ::-webkit-scrollbar { width:3px; }
+        ::-webkit-scrollbar-thumb { background:var(--gold); border-radius:2px; }
+
+        /* Scroll progress bar */
+        #scroll-progress {
+            position:fixed;
+            top:0; left:0;
+            height:2px;
+            width:0%;
+            background:linear-gradient(90deg,var(--gold),var(--accent));
+            z-index:100000;
+            transition:width .1s linear;
+        }
+
+        ::selection { background:rgba(201,168,76,.25); color:var(--text); }
+
+/* ===== ACCESSIBILITY ===== */
+
+/* Skip link */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 999999;
+    background: var(--accent);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 0 0 6px 6px;
+    font-weight: 700;
+    font-size: .9rem;
+    text-decoration: none;
+    transition: top .2s;
+}
+.skip-link:focus {
+    top: 0;
+}
+
+/* Focus visible - clear outline for keyboard navigation */
+:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 3px;
+}

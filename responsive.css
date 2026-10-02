@@ -1,0 +1,20 @@
+/* ===== RESPONSIVE ===== */
+
+        @media(max-width:900px) { .contact-wrap { grid-template-columns:1fr; } }
+        @media(max-width:768px) {
+            .about-info { flex-direction:column; }
+            .contact-form-box { padding:26px 18px; }
+            .process-steps::before { display:none; }
+            .about-wrap { padding:26px 22px; }
+            .hero-stats { gap:20px; }
+            .hero-stats strong { font-size:1.4rem; }
+            .whatsapp-float { width:55px; height:55px; font-size:24px; left:15px; bottom:15px; }
+            .back-to-top { left:15px; bottom:80px; }
+            .form-bottom { flex-direction:column; }
+        }
+        @media(min-width:769px) and (max-width:1024px) { .why-grid { grid-template-columns:repeat(3,1fr); } }
+
+        @media print {
+            header,footer,.whatsapp-float,.back-to-top,#cursor,#cursor-ring,#scroll-progress,#preloader,.hero-cta,.hero-stats { display:none !important; }
+            body { font-size:12pt; }
+        }

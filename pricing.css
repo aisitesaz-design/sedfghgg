@@ -1,0 +1,288 @@
+/* ===== SERVICE PRICING (rebuilt) ===== */
+
+.svc-intro {
+    max-width: 620px;
+    margin: 0 auto 30px;
+    text-align: center;
+    color: var(--muted);
+    font-size: .92rem;
+    line-height: 1.9;
+}
+
+/* Type selector */
+.svc-types {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 34px;
+}
+.svc-type-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: .85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s, background .2s, color .2s;
+    white-space: nowrap;
+}
+.svc-type-btn .ico { font-size: 1rem; }
+.svc-type-btn:hover { transform: translateY(-2px); }
+.svc-type-btn[aria-pressed="true"] {
+    background: var(--gradient-chakra);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 10px 26px rgba(91,63,166,.32);
+}
+
+/* Cards */
+.svc-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    align-items: stretch;
+}
+@media (max-width: 1100px) {
+    .svc-cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+    .svc-cards { grid-template-columns: 1fr; }
+}
+.svc-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 22px 18px;
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+.svc-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px var(--shadow); border-color: rgba(201,168,76,.35); }
+
+.svc-card-tier {
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .3px;
+    color: var(--gold);
+    text-transform: none;
+    margin-bottom: 8px;
+}
+.svc-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+.svc-card-desc {
+    font-size: .8rem;
+    color: var(--muted);
+    margin-bottom: 18px;
+    line-height: 1.7;
+}
+.svc-price {
+    font-size: 1.32rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1.35;
+    margin-bottom: 4px;
+}
+[data-theme="dark"] .svc-price { color: var(--accent2); }
+.svc-delivery {
+    font-size: .78rem;
+    color: var(--muted);
+    margin-bottom: 18px;
+}
+.svc-features {
+    list-style: none;
+    flex: 1;
+    margin-bottom: 20px;
+}
+.svc-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 7px 0;
+    font-size: .85rem;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+}
+.svc-features li:last-child { border-bottom: none; }
+.svc-features li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 900;
+    flex-shrink: 0;
+}
+.svc-card-btn {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    border-radius: 3px;
+    background: var(--gradient-chakra);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: .87rem;
+    transition: filter .2s, transform .2s;
+}
+.svc-card-btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
+
+/* WordPress tier — temporarily disabled, shown muted with a stamp */
+.svc-card.svc-muted {
+    opacity: .5;
+    filter: grayscale(.6);
+    position: relative;
+}
+.svc-card.svc-muted .svc-card-btn {
+    pointer-events: none;
+}
+.svc-stamp {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(-16deg) scale(1.8);
+    opacity: 0;
+    z-index: 5;
+    pointer-events: none;
+    padding: 7px 14px;
+    border: 3px solid #B8001F;
+    border-radius: 8px;
+    color: #B8001F;
+    font-family: 'Vazirmatn', sans-serif;
+    font-weight: 900;
+    font-size: .82rem;
+    letter-spacing: .5px;
+    white-space: nowrap;
+    text-align: center;
+    background: rgba(184,0,31,.07);
+    animation: stampHit .45s cubic-bezier(.36,1.8,.5,1) .3s forwards, stampPulse 3.5s ease-in-out 1.2s infinite;
+}
+[data-theme="dark"] .svc-stamp { color: #ff4d63; border-color: #ff4d63; background: rgba(255,77,99,.1); }
+@keyframes stampHit {
+    0%   { opacity: 0; transform: translate(-50%,-50%) rotate(-16deg) scale(2.6); }
+    60%  { opacity: 1; transform: translate(-50%,-50%) rotate(-16deg) scale(.92); }
+    80%  { transform: translate(-50%,-50%) rotate(-16deg) scale(1.06); }
+    100% { opacity: 1; transform: translate(-50%,-50%) rotate(-16deg) scale(1); }
+}
+@keyframes stampPulse {
+    0%, 82%, 100% { transform: translate(-50%,-50%) rotate(-16deg) scale(1); }
+    88% { transform: translate(-50%,-50%) rotate(-16deg) scale(1.12); }
+    94% { transform: translate(-50%,-50%) rotate(-16deg) scale(1); }
+}
+.svc-card.svc-na {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--muted);
+    background: var(--card2);
+    border-style: dashed;
+}
+.svc-card.svc-na .svc-na-ico { font-size: 1.6rem; margin-bottom: 10px; opacity: .7; }
+.svc-card.svc-na p { font-size: .85rem; line-height: 1.8; }
+
+/* Range factors note (reuses .faq-item styling context) */
+.svc-note {
+    margin-top: 30px;
+    max-width: 720px;
+    margin-inline: auto;
+}
+.svc-note-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 14px;
+}
+@media (max-width: 640px) {
+    .svc-note-grid { grid-template-columns: 1fr; }
+}
+.svc-note-box {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 18px;
+}
+.svc-note-box h5 {
+    font-size: .84rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+.svc-note-box ul { list-style: none; }
+.svc-note-box li {
+    font-size: .8rem;
+    color: var(--muted);
+    padding: 4px 0;
+    display: flex;
+    gap: 6px;
+}
+.svc-note-box li::before { content: '—'; flex-shrink: 0; opacity: .6; }
+
+/* SEO/GEO/AEO strip */
+.svc-seo-strip {
+    margin-top: 26px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: linear-gradient(135deg, rgba(91,63,166,.07), rgba(201,168,76,.06));
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 20px;
+}
+.svc-seo-strip .ico { font-size: 1.3rem; flex-shrink: 0; }
+.svc-seo-strip p { font-size: .82rem; color: var(--text); line-height: 1.85; }
+.svc-seo-strip strong { color: var(--accent); }
+[data-theme="dark"] .svc-seo-strip strong { color: var(--accent2); }
+
+/* Trust badges (ENAMAD / بنیان رسانه‌های دیجیتال) placeholders */
+.trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin: 18px 0;
+}
+.trust-badge-slot {
+    width: 100px;
+    height: 100px;
+    border: 1.5px dashed var(--border);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: var(--muted);
+    font-size: .68rem;
+    text-align: center;
+    line-height: 1.5;
+    padding: 6px;
+}
+.trust-badge-slot .ico { font-size: 1.4rem; opacity: .65; }
+
+/* ===== INDUSTRY IDEAS GRID ===== */
+.idea-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 16px;
+    margin-top: 10px;
+}
+.idea-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 18px;
+    transition: transform .2s, border-color .2s;
+}
+.idea-card:hover { transform: translateY(-4px); border-color: rgba(91,63,166,.3); }
+.idea-ico { font-size: 1.5rem; display: block; margin-bottom: 8px; }
+.idea-card h4 { font-size: .92rem; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+.idea-card p { font-size: .78rem; color: var(--muted); line-height: 1.9; }
+.idea-card p b { color: var(--text); font-weight: 700; }
